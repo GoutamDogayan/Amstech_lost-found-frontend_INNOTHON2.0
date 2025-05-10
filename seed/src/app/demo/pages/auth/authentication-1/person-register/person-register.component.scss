@@ -1,7 +1,11 @@
 
-.button-group {
+.button-container {
   display: flex;
-  gap: 30px; /* You can adjust this value */
-  margin-top: 50px;
-  flex-wrap: wrap; /* Optional for responsive stacking */
+  justify-content: space-between;
+  margin-top: 20px;
+
+  button {
+    min-width: 120px; // optional: uniform width
+  }
+
 }

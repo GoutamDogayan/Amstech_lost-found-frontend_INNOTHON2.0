@@ -1,7 +1,11 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
+
+import { FoundDataService } from "../demo/pages/auth/service/found-data-service";
+
 import { functions } from "lodash";
 import { MissingPersonService } from "../demo/pages/auth/service/missing-person";
+
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 
@@ -15,7 +19,7 @@ export class HomepageComponent {
   name: string = '';  // ✅ Add this line
   userDetails: any = null;
 
-  constructor(private http: HttpClient, private apiService: MissingPersonService) {}
+  constructor(private http: HttpClient, private apiService: MissingPersonService,private foundDataService: FoundDataService) {}
 
   detectUser(name: string): void {
     this.apiService.detectUser(name).subscribe(
@@ -30,6 +34,20 @@ export class HomepageComponent {
       (error) => {
         console.error('Error detecting user:', error);
         this.userDetails = null;
+      }
+    );
+  }
+   foundDataList: any[] = [];
+  idProof: string = ''; 
+
+  findMissingPerson() {
+    this.foundDataService.missingPersonRegister(this.idProof).subscribe(
+      (response) => {
+        console.log('Found data:', response);
+       this.foundDataList = [response.data]; 
+      },
+      (error) => {
+        console.error('Error fetching found data:', error);
       }
     );
   }

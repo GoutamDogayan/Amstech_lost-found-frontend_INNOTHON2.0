@@ -62,7 +62,8 @@ import { UserService } from '../../service/user-service';
       const roleId = response?.data?.roles?.[0]?.id;
 
       console.log('Token from localStorage:', token);
-  
+       alert(response.message);
+
         this.router.navigate(['/home']);
      
     },

@@ -1,7 +1,8 @@
 <div class="panel-container">
   <h1>Government Surveillance Panel</h1>
   <p class="text-center mb-3">
-    Enter the <strong>Name</strong> of the lost person below:
+
+     Enter the <strong>Name</strong> of the lost person below:
   </p>
 
   <input
@@ -11,19 +12,31 @@
     placeholder="Enter Name..."
   />
 
-  <div class="button-group">
-    <button mat-flat-button color="primary" (click)="detectFaces()">Detect Faces</button>
-    <button class="btn btn-warning btn-custom" (click)="detectUser(name)">Find User Details</button>
+  <div class="button-group"> <button class="btn btn-warning btn-custom" (click)="findMissingPerson()">
+      Find User Details
+    </button>
+    <button class="btn btn-warning btn-custom" (click)="detectUser(name)">Detect person</button>
   </div>
 
-  <div class="card mt-4" *ngIf="userDetails">
+  <!-- Show this only when data is available -->
+  <div class="card mt-4" *ngIf="foundDataList.length > 0">
     <div class="card-header">
       User Details
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Name: <span class="float-end">{{ userDetails.name }}</span></li>
-      <li class="list-group-item">Age: <span class="float-end">{{ userDetails.age }}</span></li>
-      <li class="list-group-item">Last Seen: <span class="float-end">{{ userDetails.lastSeen }}</span></li>
-    </ul>
+
+    <div *ngFor="let foundData of foundDataList">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">User ID: <span class="float-end">{{ foundData.id }}</span></li>
+        <li class="list-group-item">Name: <span class="float-end">{{ foundData.name }}</span></li>
+        <li class="list-group-item">Email: <span class="float-end">{{ foundData.email }}</span></li>
+        <li class="list-group-item">Mobile Number: <span class="float-end">{{ foundData.mobileNumber }}</span></li>
+        <li class="list-group-item">Gender: <span class="float-end">{{ foundData.gender }}</span></li>
+        <li class="list-group-item">ID Proof: <span class="float-end">{{ foundData.idProof }}</span></li>
+        <li class="list-group-item">Date: <span class="float-end">{{ foundData.createdAt }}</span></li>
+        <li class="list-group-item">Location: <span class="float-end">{{ foundData.location }}</span></li>
+        <li class="list-group-item">Time: <span class="float-end">{{ foundData.time }}</span></li>
+        <li class="list-group-item">Description: <span class="float-end">{{ foundData.description }}</span></li>
+      </ul>
+ 
   </div>
 </div>
