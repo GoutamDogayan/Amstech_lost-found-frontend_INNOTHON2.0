@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/demo/shared/shared.module';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MissingPersonService } from '../../service/missing-person';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -51,17 +52,32 @@ registerForm: FormGroup;
 
    // Handle Dataset Generation
   generateDataset(data: any): void {
-    console.log(this.faceForm.value);
-    this.apiService.generateDataset(data).subscribe(
-      (response) => {
-        this.trainModel();
-        console.log('Dataset generated:', response);
-      },
-      (error) => {
-        console.error('Error generating dataset:', error);
-      }
-    );
-  }
+  console.log(this.faceForm.value);
+  this.apiService.generateDataset(data).subscribe(
+    (response) => {
+      this.trainModel();
+      console.log('Dataset generated:', response);
+      
+      Swal.fire({
+        icon: 'success',
+        title: 'Dataset Generated',
+        text: 'Face dataset has been generated successfully.',
+        confirmButtonText: 'OK'
+      });
+    },
+    (error) => {
+      console.error('Error generating dataset:', error);
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Dataset Generation Failed',
+        text: 'An error occurred while generating the dataset.',
+        confirmButtonText: 'Close'
+      });
+    }
+  );
+}
+
 
   // Handle Model Training
   trainModel(): void {
