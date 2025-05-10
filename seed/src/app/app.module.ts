@@ -14,11 +14,14 @@ import { BasicAuthInterceptor } from 'src/app/@theme/helpers/basic-auth.intercep
 import { SharedModule } from './demo/shared/shared.module';
 import { GuestModule } from './demo/layout/front';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [AppComponent],
   bootstrap: [AppComponent],
-  imports: [AppRoutingModule, SharedModule, BrowserAnimationsModule, BrowserModule, GuestModule, CarouselModule],
+  imports: [AppRoutingModule, SharedModule, BrowserAnimationsModule, BrowserModule, GuestModule, CarouselModule,FormsModule,HomepageComponent,CommonModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

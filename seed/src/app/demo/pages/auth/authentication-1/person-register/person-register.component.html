@@ -1,94 +1,89 @@
-
 <div class="auth-main">
   <div class="auth-wrapper version-1">
     <div class="auth-form">
-<div class="main-form">
-
-  <form [formGroup]="faceForm" (ngSubmit)="onRegister()">
-    <app-card [showHeader]="false" class="auth-form-card" padding="40">
-      <div class="text-center m-b-25 f-20 f-w-500">Register yourself</div>
-      <div class="row text-start">
-        <div class="col-md-6">
-          <mat-label>Name</mat-label>
-          <mat-form-field appearance="outline" class="w-100 m-t-5">
-            <input matInput placeholder="Name" formControlName="name" />
-          </mat-form-field>
-        </div>
-        <div class="col-md-6">
-          <mat-label>Age</mat-label>
-          <mat-form-field appearance="outline" class="w-100 m-t-5">
-            <input matInput type="number" placeholder="Age" formControlName="age" />
-          </mat-form-field>
+      <div class="main-form">
+        <div class="auth-background">
+          <div class="yellow-circle"></div>
+          <div class="red-circle"></div>
         </div>
 
-        <div class="col-md-6">
-          <mat-label>Gender</mat-label>
-          <mat-form-field appearance="outline" class="w-100 m-t-5">
-            <input matInput placeholder="Gender" formControlName="gender" />
-          </mat-form-field>
-        </div>
+        <app-card [showHeader]="false" class="auth-form-card" padding="40">
+          <div class="text-center m-b-25 f-20 f-w-500">Register yourself</div>
+          <form [formGroup]="faceForm" (ngSubmit)="onRegister()">
+            <div class="row text-start">
+              <div class="col-md-12">
+                <mat-label>Name</mat-label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput placeholder="Name" formControlName="name" />
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-label>Age</mat-label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput type="number" placeholder="Age" formControlName="age" />
+                </mat-form-field>
+              </div>
 
-        <div class="col-md-12">
-          <mat-label>Phone Number</mat-label>
-          <mat-form-field appearance="outline" class="w-100 m-t-5">
-            <input matInput placeholder="Phone Number" formControlName="mobileNumber" />
-          </mat-form-field>
-        </div>
+              <div class="col-md-6">
+                <mat-label>Gender</mat-label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput placeholder="Gender" formControlName="gender" />
+                </mat-form-field>
+              </div>
 
-        <div class="col-12">
-          <mat-label>Email</mat-label>
-          <mat-form-field appearance="outline" class="w-100 m-t-5">
-            <input matInput formControlName="email" placeholder="Email Address" required />
-            <mat-error *ngIf="faceForm.get('email')?.invalid">{{ getErrorMessage() }}</mat-error>
-          </mat-form-field>
-        </div>
+              <div class="col-md-12">
+                <mat-label>Phone Number</mat-label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput placeholder="Phone Number" formControlName="mobileNumber" />
+                </mat-form-field>
+              </div>
 
-        <div class="col-12">
-          <mat-label>Aadhar Number</mat-label>
-          <mat-form-field appearance="outline" class="w-100 m-t-5">
-            <input matInput formControlName="idProof" placeholder="Aadhar Number" required />
-            <mat-error *ngIf="faceForm.get('idProof')?.invalid">{{ getErrorMessage() }}</mat-error>
-          </mat-form-field>
-        </div>
+              <div class="col-12">
+                <mat-label>Email</mat-label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput formControlName="email" placeholder="Email Address" required />
+                  <mat-error *ngIf="faceForm.get('email')?.invalid">{{ getErrorMessage() }}</mat-error>
+                </mat-form-field>
+              </div>
 
-        <div class="col-12">
-          <mat-label>Description</mat-label>
-          <mat-form-field appearance="outline" class="w-100 m-t-5">
-            <input matInput formControlName="description" placeholder="Description" required />
-            <mat-error *ngIf="faceForm.get('description')?.invalid">{{ getErrorMessage() }}</mat-error>
-          </mat-form-field>
-        </div>
+              <div class="col-12">
+                <mat-label>Aadhar Number</mat-label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput formControlName="idProof" placeholder="Aadhar Number" required />
+                  <mat-error *ngIf="faceForm.get('idProof')?.invalid">{{ getErrorMessage() }}</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col-12">
+                <mat-label>Description</mat-label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput formControlName="description" placeholder="Description" required />
+                  <mat-error *ngIf="faceForm.get('description')?.invalid">{{ getErrorMessage() }}</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="check-me">
+              <mat-checkbox class="float-start" color="primary">I agree to all the Terms & Conditions</mat-checkbox>
+            </div>
+
+            <div class="button-container">
+              <button mat-flat-button color="primary" type="button" (click)="generateDataset()">Generate
+                Dataset</button>
+
+              <button class="btn-left" mat-flat-button color="success" [disabled]="!isDatasetGenerated"
+                (click)="onRegister()">Register</button>
+            </div>
+
+            <div class="check-me m-t-15">
+              <div class="text-muted">Already have an account?</div>
+              <a class="text-primary-500" href="/login">
+                Login Account
+              </a>
+            </div>
+          </form>
+        </app-card>
       </div>
-
-      <div class="check-me">
-        <mat-checkbox class="float-start" color="primary">I agree to all the Terms & Conditions</mat-checkbox>
-      </div>
-
-      <div class="flex gap-4">
-  <button mat-flat-button color="accent" type="button" 
-          (click)="generateDataset()">Generate Dataset</button>
-
-  <button mat-flat-button color="primary" 
-          [disabled]="!isDatasetGenerated"
-          (click)="onRegister()">Register</button>
-</div>
-
-      <div class="check-me m-t-15">
-        <div class="text-muted">Already have an account?</div>
-        <a class="text-primary-500" [routerLink]="[this.authenticationService.isLoggedIn() ? '/authentication-1/login' : '/']">
-          Login Account
-        </a>
-      </div>
-
-      <!-- Face Recognition Controls -->
-      <div class="flex gap-3 m-t-20">
-        <button mat-flat-button color="warn" (click)="generateDataset()">Generate Dataset</button>
-        <button mat-flat-button color="accent" (click)="trainModel()">Train</button>
-        <button mat-flat-button color="primary" (click)="detectFaces()">Detect Faces</button>
-      </div>
-    </app-card>
-  </form>
-</div>
     </div>
   </div>
 </div>

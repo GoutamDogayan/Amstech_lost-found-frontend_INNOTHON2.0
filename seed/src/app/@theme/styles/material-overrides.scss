@@ -51,7 +51,7 @@ body {
 
   @media (max-width: 575.98px) {
     .mat-drawer.notification-status {
-      width: 350px !important;
+      width: 450px !important;
     }
   }
 
@@ -184,27 +184,53 @@ body {
   /* -------------------------------------------------------------------------- */
   /*  @ mat card
   /* -------------------------------------------------------------------------- */
-  .mat-mdc-card {
-    background: white !important;
+ .mat-mdc-card {
+    position: relative; /* Important for ::before */
+    overflow: hidden;   /* Hide the glowing overlay outside the card */
+    background: #fff !important;
     border: 1px solid #606F7D !important;
     border-radius: 12px !important;
-    box-shadow: none !important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
     margin-bottom: 24px;
+    transition: all 0.4s ease;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        0deg, 
+        transparent, 
+        transparent 30%, 
+        
 
-    &.mdc-card {
-      .mat-mdc-card-header {
-        .mat-mdc-card-header-text {
-          display: none;
-        }
+      );
+      // transform: rotate(-45deg);
+      // transition: all 0.5s ease;
+      opacity: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+  
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  
+      &::before {
+        opacity: 1;
+        transform: rotate(-45deg) translateY(100%);
       }
     }
-  }
-
-  &.dark {
-    .mat-mdc-card {
-      background-color: var(--accent-50);
+  
+    .mat-mdc-card-header .mat-mdc-card-header-text {
+      display: none;
     }
   }
+  
+ 
 
   /* -------------------------------------------------------------------------- */
   /*  @ mat expandable

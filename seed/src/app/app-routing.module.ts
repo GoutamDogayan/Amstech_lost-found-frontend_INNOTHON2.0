@@ -12,7 +12,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
   {
-path: '',
+path: 'home',
     component: HomepageComponent,
   },
 
