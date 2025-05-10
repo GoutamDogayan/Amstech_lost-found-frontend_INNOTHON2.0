@@ -36,19 +36,10 @@ export class AuthenticationService {
     const currentUser = this.currentUserValue;
     return currentUser ? currentUser.user.name : null;
   }
-
-  login(email: string, password: string) {
-    return this.http.post<User>(`${environment.apiUrl}/api/account/login`, { email, password }).pipe(
-      map((user: User) => {
-        // Explicitly define the type for 'user'
-        // Store user details and JWT token in local storage
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.isLogin = true;
-        // Update the signal with the new user
-        this.currentUserSignal.set(user);
-        return user;
-      })
-    );
+ private apiUrl = 'http://localhost:1024/lost-found-local/user/login';
+  login(user:any) {
+    return this.http.post<any>(this.apiUrl, user);
+    
   }
 
   isLoggedIn() {
