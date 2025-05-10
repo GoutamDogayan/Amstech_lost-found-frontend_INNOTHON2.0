@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class MissingPersonService {
 
-  private apiUrl = 'http://localhost:1024/lost-found-local/missingPerson/missingPersonRegister';  // Your backend API endpoint
+  private apiUrl = 'http://localhost:1024/lost-found-local/missingPerson/missingPersonRegister';  
 
   constructor(private http: HttpClient) {}
 

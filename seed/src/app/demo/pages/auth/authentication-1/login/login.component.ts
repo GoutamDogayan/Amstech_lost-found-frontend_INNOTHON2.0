@@ -1,20 +1,16 @@
 // angular import
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 
 // project import
 import { SharedModule } from 'src/app/demo/shared/shared.module';
 import { AuthenticationService } from 'src/app/@theme/services/authentication.service';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
+import { first } from 'rxjs';
+import { UserService } from '../../service/user-service';
 
-interface Roles {
-  name: string;
-  email: string;
-  password: string;
-  role: string;
-}
+
 
 @Component({
   selector: 'app-login',
@@ -22,83 +18,62 @@ interface Roles {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss', '../authentication-1.scss', '../../authentication.scss']
 })
-export class LoginComponent implements OnInit {
-  private formBuilder = inject(FormBuilder);
-  private route = inject(ActivatedRoute);
-  private router = inject(Router);
+
+
+ export class LoginComponent {
   authenticationService = inject(AuthenticationService);
 
-  // public props
   hide = true;
   loginForm: FormGroup;
   loading = false;
   submitted = false;
-  returnUrl: string;
+  returnUrl: string = '';
   error = '';
+  isLoading = false;
 
-  ngOnInit() {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private userService: UserService
+  ) {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      userName: new FormControl('', [Validators.required]),
+      password: new FormControl('', Validators.required)
     });
-
-    if (window.location.pathname !== '/authentication-1/login') {
-      if (this.authenticationService.currentUserValue) {
-        this.router.navigate(['/sample-page']);
-      }
-    }
-
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
   }
 
-  // convenience getter for easy access to form fields
   get formValues() {
     return this.loginForm.controls;
   }
 
-  onSubmit() {
-    this.submitted = true;
+  public login(): void {
+    console.log("Login User..");
+    this.isLoading = true;
+  
+    this.userService.userlogin(this.loginForm.value)
+  .pipe(first())
+  .subscribe(
+    (response) => {
+      // Now `response` is the user object (response.body)
+      console.log('User response:', response);
 
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      return;
-    }
+      const token = localStorage.getItem('token');
+      const userId = response?.data?.id;
+      const roleId = response?.data?.roles?.[0]?.id;
 
-    this.loading = true;
-    this.authenticationService
-      .login(this.formValues['email'].value, this.formValues['password'].value)
-      .pipe(first())
-      .subscribe(
-        () => {
-          this.router.navigate(['/sample-page']);
-        },
-        (error) => {
-          this.error = error;
-          this.loading = false;
-        }
-      );
-  }
-
-  roles: Roles[] = [
-    {
-      name: 'Admin',
-      email: 'admin@gmail.com',
-      password: 'Admin@123',
-      role: 'Admin'
+      console.log('Token from localStorage:', token);
+  
+        this.router.navigate(['/']);
+     
     },
-    {
-      name: 'User',
-      email: 'user@gmail.com',
-      password: 'User@123',
-      role: 'User'
+    (error) => {
+      console.error('Login error:', error);
+      alert("Login Failed: " + (error.error?.message || "Unknown error"));
+      this.loginForm.reset();
     }
-  ];
+  );
 
-  // Default to the first role
-  selectedRole = this.roles[0];
-
-  onSelectRole(role: Roles) {
-    this.selectedRole = role;
   }
-}
+
+
+  }
