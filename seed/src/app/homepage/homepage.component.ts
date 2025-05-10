@@ -8,6 +8,7 @@ import { MissingPersonService } from "../demo/pages/auth/service/missing-person"
 
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import { UserService } from "../demo/pages/auth/service/user-service";
 
 @Component({
   selector: 'app-homepage',
@@ -19,7 +20,7 @@ export class HomepageComponent {
   name: string = '';  // ✅ Add this line
   userDetails: any = null;
 
-  constructor(private http: HttpClient, private apiService: MissingPersonService,private foundDataService: FoundDataService) {}
+  constructor(private http: HttpClient, private apiService: MissingPersonService,private foundDataService: FoundDataService,private userService:UserService) {}
 
   detectUser(name: string): void {
     this.apiService.detectUser(name).subscribe(
@@ -44,7 +45,7 @@ export class HomepageComponent {
     this.foundDataService.missingPersonRegister(this.idProof).subscribe(
       (response) => {
         console.log('Found data:', response);
-       this.foundDataList = [response.data]; 
+       this.foundDataList = response.data; 
       },
       (error) => {
         console.error('Error fetching found data:', error);
@@ -52,6 +53,10 @@ export class HomepageComponent {
     );
   }
 
+  logout() {
+    console.log("Logout clicked");
+    this.userService.logout();
+  }
   detectFaces(): void {
     console.log('Detecting faces...');
   }

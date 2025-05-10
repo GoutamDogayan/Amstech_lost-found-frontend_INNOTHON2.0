@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { RouterModule } from "@angular/router";
+import { UserService } from "../demo/pages/auth/service/user-service";
 
 @Component({
     templateUrl: './home.component.html',
@@ -8,7 +9,12 @@ import { RouterModule } from "@angular/router";
 })
 
 export class HomeComponent {
-    constructor() {
+    constructor(private userService: UserService) {
         console.log("Home component initialized");
     }
+
+     logout() {
+    console.log("Logout clicked");
+    this.userService.logout();
+  }
 }
