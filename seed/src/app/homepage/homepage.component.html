@@ -1,16 +1,21 @@
 <div class="panel-container">
   <h1>Government Surveillance Panel</h1>
   <p class="text-center mb-3">
-    Enter the <strong>User ID</strong> of the lost person below:
+
+     Enter the <strong>Name</strong> of the lost person below:
   </p>
 
-  <input type="text" [(ngModel)]="idProof" class="form-control mb-3" placeholder="Enter ID Proof..." />
+  <input
+    type="text"
+    [(ngModel)]="name"
+    class="form-control mb-3"
+    placeholder="Enter Name..."
+  />
 
-  <div class="button-group mb-4">
-    <button class="btn btn-danger btn-custom">Activate Cameras</button>
-    <button class="btn btn-warning btn-custom" (click)="findMissingPerson()">
+  <div class="button-group"> <button class="btn btn-warning btn-custom" (click)="findMissingPerson()">
       Find User Details
     </button>
+    <button class="btn btn-warning btn-custom" (click)="detectUser(name)">Detect person</button>
   </div>
 
   <!-- Show this only when data is available -->
@@ -32,6 +37,6 @@
         <li class="list-group-item">Time: <span class="float-end">{{ foundData.time }}</span></li>
         <li class="list-group-item">Description: <span class="float-end">{{ foundData.description }}</span></li>
       </ul>
-    </div>
+ 
   </div>
 </div>

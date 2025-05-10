@@ -9,11 +9,17 @@ import { GuestComponent } from './demo/layout/front/guest.component';
 import { AuthGuardChild } from './@theme/helpers/auth.guard';
 import { Role } from './@theme/types/role';
 import { HomepageComponent } from './homepage/homepage.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  
   {
 path: 'home',
     component: HomepageComponent,
+  },
+   {
+path: 'homepage',
+    component: HomeComponent,
   },
 
   {

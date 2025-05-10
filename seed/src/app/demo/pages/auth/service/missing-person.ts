@@ -8,15 +8,19 @@ import { Observable } from 'rxjs';
 })
 export class MissingPersonService {
 
-  private apiUrl = 'http://localhost:1024/lost-found-local/missingPerson/missingPersonRegister';  
+  private apiUrl = 'http://localhost:5000/api'; // Update if the Flask API is hosted elsewhere
 
   constructor(private http: HttpClient) {}
 
-  // Method to call the API and register a missing person
-  missingPersonRegister(requestModel: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-    return this.http.post<any>(this.apiUrl, requestModel, { headers });
+  generateDataset(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/generate-dataset`, data);
+  }
+
+  trainModel(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/train`);
+  }
+
+  detectUser(name: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/detect`, { name });
   }
 }

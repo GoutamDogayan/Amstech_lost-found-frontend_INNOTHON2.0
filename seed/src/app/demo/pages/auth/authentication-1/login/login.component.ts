@@ -63,6 +63,7 @@ import { UserService } from '../../service/user-service';
 
       console.log('Token from localStorage:', token);
        alert(response.message);
+
         this.router.navigate(['/home']);
      
     },
