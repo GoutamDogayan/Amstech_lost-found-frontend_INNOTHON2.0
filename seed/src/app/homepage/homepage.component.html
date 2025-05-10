@@ -1,27 +1,29 @@
-<body>
+<div class="panel-container">
+  <h1>Government Surveillance Panel</h1>
+  <p class="text-center mb-3">
+    Enter the <strong>Name</strong> of the lost person below:
+  </p>
 
-  <div class="panel-container">
-    <h1>Government Surveillance Panel</h1>
-    <p class="text-center mb-3">Enter the <strong>User ID</strong> of the lost person below:</p>
+  <input
+    type="text"
+    [(ngModel)]="name"
+    class="form-control mb-3"
+    placeholder="Enter Name..."
+  />
 
-    <input type="text" id="userIdInput" class="form-control mb-3" placeholder="Enter User ID..." />
-
-    <div class="button-group">
-      <button class="btn btn-danger btn-custom">Activate Cameras</button>
-      <button class="btn btn-warning btn-custom">Find User Details</button>
-    </div>
-
-    <div class="card mt-4">
-      <div class="card-header">
-        User Details
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">User ID: <span class="float-end">--</span></li>
-        <li class="list-group-item">Name: <span class="float-end">--</span></li>
-        <li class="list-group-item">Age: <span class="float-end">--</span></li>
-        <li class="list-group-item">Last Seen: <span class="float-end">--</span></li>
-      </ul>
-    </div>
+  <div class="button-group">
+    <button mat-flat-button color="primary" (click)="detectFaces()">Detect Faces</button>
+    <button class="btn btn-warning btn-custom" (click)="detectUser(name)">Find User Details</button>
   </div>
 
-</body>
+  <div class="card mt-4" *ngIf="userDetails">
+    <div class="card-header">
+      User Details
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Name: <span class="float-end">{{ userDetails.name }}</span></li>
+      <li class="list-group-item">Age: <span class="float-end">{{ userDetails.age }}</span></li>
+      <li class="list-group-item">Last Seen: <span class="float-end">{{ userDetails.lastSeen }}</span></li>
+    </ul>
+  </div>
+</div>
