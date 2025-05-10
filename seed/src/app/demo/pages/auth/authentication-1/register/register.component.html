@@ -9,53 +9,51 @@
         <app-card [showHeader]="false" class="auth-form-card" padding="40">
         
           <div class="text-center m-b-25 f-20 f-w-500">Sign up with your work email.</div>
+          <form [formGroup]="faceForm" (ngSubmit)="onRegister()">
           <div class="row text-start">
             <div class="col-md-6">
-              <mat-label>First Name</mat-label>
+              <mat-label>Name</mat-label>
               <mat-form-field appearance="outline" class="w-100 m-t-5">
-                <input type="text" matInput placeholder="First Name" />
+                <input type="text" matInput placeholder="First Name" formControlName="name" />
               </mat-form-field>
             </div>
             <div class="col-md-6">
-              <label for="name" class="f-w-500">Last Name</label>
+              <label for="name" class="f-w-500">Address</label>
               <mat-form-field appearance="outline" class="w-100 m-t-5">
-                <input type="text" matInput placeholder="Last Name" />
+                <input type="text" matInput placeholder="Address" formControlName="address" />
+              </mat-form-field>
+            </div>
+             <div class="col-12">
+              <label for="name" class="f-w-500">Enter Your Mobile Number</label>
+              <mat-form-field appearance="outline" class="w-100 m-t-5">
+                <input matInput required placeholder="Enter Your Mobile Number" formControlName="mobileNumber" />
+               
               </mat-form-field>
             </div>
             <div class="col-12">
               <label for="name" class="f-w-500">Enter Your Email</label>
               <mat-form-field appearance="outline" class="w-100 m-t-5">
-                <input matInput [formControl]="email" required placeholder="Email Address" />
-                @if (email.invalid) {
-                  <mat-error>{{ getErrorMessage() }}</mat-error>
-                }
+                <input matInput  required placeholder="Email Address" formControlName="email" />
+               
+              </mat-form-field>
+            </div>
+
+             <div class="col-12">
+              <label for="name" class="f-w-500">Enter Your Identity</label>
+              <mat-form-field appearance="outline" class="w-100 m-t-5">
+                <input matInput  required placeholder="Id Number" formControlName="idProof" />
+               
               </mat-form-field>
             </div>
             <div class="col-12">
               <label for="name" class="f-w-500">Enter your password</label>
               <mat-form-field appearance="outline" class="w-100 m-t-5">
-                <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter Password" />
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                  <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-                </button>
+                <input matInput type="password" placeholder="Enter Password" formControlName="password"/>
+              
               </mat-form-field>
             </div>
-            <div class="col-12">
-              <label for="name" class="f-w-500">Enter your Confirm Password</label>
-              <mat-form-field appearance="outline" class="w-100 m-t-5">
-                <input matInput [type]="coHide ? 'password' : 'text'" placeholder="Enter Confirm Password" />
-                <button
-                  mat-icon-button
-                  matSuffix
-                  (click)="coHide = !coHide"
-                  [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="coHide"
-                >
-                  <mat-icon>{{ coHide ? 'visibility_off' : 'visibility' }}</mat-icon>
-                </button>
-              </mat-form-field>
-            </div>
-          </div>
+          
+         
           <div class="check-me">
             <mat-checkbox class="float-start" checked color="primary">I agree to all the Terms & Condition</mat-checkbox>
           </div>
@@ -64,7 +62,7 @@
           </div>
           <div class="check-me m-t-15">
             <div class="text-muted">Don't have an Account?</div>
-            <a class="text-primary-500" [routerLink]="[this.authenticationService.isLoggedIn() ? '/authentication-1/login' : '/']">
+            <a class="text-primary-500" href="/login" >
               Login Account
             </a>
               
@@ -73,6 +71,8 @@
              Person Register
             </a>
           </div>
+          </div>
+          </form>
         </app-card>
       </div>
     </div>

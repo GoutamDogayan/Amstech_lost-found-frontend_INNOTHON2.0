@@ -1,0 +1,74 @@
+$primary-bg: #e7e8ea;
+$container-bg:  rgb(248, 248, 248);
+$input-bg: #ffffff;
+$card-bg: #ffffff;
+$card-header-bg: #fff4f4;
+$text-color: #000000;
+$accent-color: #050606;
+$placeholder-color: #bbb;
+
+body {
+  background-color: $primary-bg;
+  color: $text-color;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.panel-container {
+  background-color: $container-bg;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: $accent-color;
+  text-align: center;
+}
+
+.form-control {
+  background-color: $input-bg;
+  color: $text-color;
+  border: none;
+
+  &::placeholder {
+    color: $placeholder-color;
+  }
+}
+
+.btn-custom {
+  width: 48%;
+  font-weight: 600;
+}
+
+.card {
+  background-color: $card-bg;
+  border: none;
+
+  .card-header {
+    background-color: $card-header-bg;
+    color: $accent-color;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  .list-group-item {
+    background-color: $card-bg;
+    color: $text-color;
+    border: none;
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
