@@ -18,13 +18,15 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HomepageComponent } from './homepage/homepage.component';
+import { RouterModule } from '@angular/router';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,FooterComponent],
   bootstrap: [AppComponent],
 
-  imports: [AppRoutingModule, SharedModule, BrowserAnimationsModule, BrowserModule, GuestModule, CarouselModule,FormsModule,HomepageComponent,CommonModule],
+  imports: [AppRoutingModule, SharedModule, BrowserAnimationsModule, BrowserModule, GuestModule, CarouselModule,FormsModule,HomepageComponent,CommonModule,RouterModule],
 
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

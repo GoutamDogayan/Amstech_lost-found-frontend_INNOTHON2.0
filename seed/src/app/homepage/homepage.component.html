@@ -1,3 +1,42 @@
+<header class="header-area nevy-blue-bg d-none d-md-block">
+  <div class="container">
+    <div class="header-top-content">
+      <div class="row">
+        <div class="col-md-7 col-sm-7 text-center text-md-left">
+         
+        </div>
+        <div class="col-md-5 col-sm-5 text-center text-md-right">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<header class="header-bottom-content nevy-blue-bg d-none d-md-block">
+  <div class="container">
+    <div class="row">
+      <div class="site-logo col-md-4 col-sm-4">
+        <a routerLink="/home">
+          <img src="" alt="site-logo" />
+        </a>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <nav class="site-navigation top-navigation">
+          <ul class="menu-list">
+            <li><a routerLink="/homepage">Home</a></li>
+            <li><a routerLink="/home">Finding</a></li>
+            <li><a routerLink="/talenthands/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-md-2 col-sm-2 text-center text-md-right">
+        <div class="booking">
+          <span><a routerLink="/booking" (click)="logout()">logout</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header> 
 <div class="panel-container">
   <h1>Government Surveillance Panel</h1>
   <p class="text-center mb-3">
@@ -7,11 +46,16 @@
 
   <input
     type="text"
+    [(ngModel)]="idProof"
+    class="form-control mb-3"
+    placeholder="Id Proof..."
+  />
+<input
+    type="text"
     [(ngModel)]="name"
     class="form-control mb-3"
     placeholder="Enter Name..."
   />
-
   <div class="button-group"> <button class="btn btn-warning btn-custom" (click)="findMissingPerson()">
       Find User Details
     </button>
