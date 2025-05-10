@@ -1,11 +1,7 @@
-
-<div class="auth-main">
-  <div class="auth-wrapper version-1">
-    <div class="auth-form">
 <div class="main-form">
-
+ <app-card [showHeader]="false" class="auth-form-card" padding="40">
   <form [formGroup]="faceForm" (ngSubmit)="onRegister()">
-    <app-card [showHeader]="false" class="auth-form-card" padding="40">
+   
       <div class="text-center m-b-25 f-20 f-w-500">Register yourself</div>
       <div class="row text-start">
         <div class="col-md-6">
@@ -64,31 +60,32 @@
         <mat-checkbox class="float-start" color="primary">I agree to all the Terms & Conditions</mat-checkbox>
       </div>
 
-      <div class="flex gap-4">
-  <button mat-flat-button color="accent" 
-          (click)="generateDataset()">Generate Dataset</button>
+   <div class="button-group">
+      <button mat-flat-button color="accent" type="button" (click)="generateDataset()">
+        Generate Dataset
+      </button>
 
-  <button mat-flat-button color="primary" 
-          [disabled]="!isDatasetGenerated"
-          (click)="onRegister()">Register</button>
-</div>
+      <button mat-flat-button color="primary" type="button" [disabled]="!isDatasetGenerated" (click)="onRegister(); trainModel()">
+        Register
+      </button>
+    </div>
 
+
+<!-- 
       <div class="check-me m-t-15">
         <div class="text-muted">Already have an account?</div>
         <a class="text-primary-500" [routerLink]="[this.authenticationService.isLoggedIn() ? '/authentication-1/login' : '/']">
           Login Account
         </a>
-      </div>
+      </div> -->
 
       <!-- Face Recognition Controls -->
-      <div class="flex gap-3 m-t-20">
+      <!-- <div class="flex gap-3 m-t-20">
         <button mat-flat-button color="warn" (click)="generateDataset()">Generate Dataset</button>
         <button mat-flat-button color="accent" (click)="trainModel()">Train</button>
         <button mat-flat-button color="primary" (click)="detectFaces()">Detect Faces</button>
-      </div>
-    </app-card>
+      </div> -->
+   
   </form>
-</div>
-    </div>
-  </div>
+ </app-card>
 </div>
