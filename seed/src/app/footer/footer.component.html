@@ -1,0 +1,66 @@
+
+<section class="footer-block">
+    <div class="footer-center">
+      <div class="container">
+        <div class="row">
+          @defer (on viewport; prefetch on viewport) {
+            <div class="col-md-4 animate__animated animate__delay-1s animate__fadeInLeft">
+              <img src="assets\images\detect.png" alt="logo" class="img-fluid m-b-15" />
+              <p class="m-b-25">
+               Face Detection project captures real-time facial images using a live camera, detects faces using OpenCV or DeepFace, and stores them for identification or verification. It plays a key role in security, attendance, and user authentication systems by recognizing and matching faces against a stored database efficiently and accurately.
+              </p>
+            </div>
+            <div class="col-md-8">
+              <div class="row">
+                @for (item of footerSection; track item; let i = $index) {
+                  <div class="col-sm-6" style="text-align: center;">
+                    <div class="m-b-25 f-16 f-w-500 animate__animated animate__delay-{{ i + 1 }}s animate__fadeInRight">
+                      {{ item.title }}
+                    </div>
+                    <ul class="footer-link">
+                      @for (items of item.footerLink; track items; let i = $index) {
+                        <li>
+                          <a [href]="items.link" target="_blank" class="animate__animated animate__delay-{{ i + 1 }}s animate__fadeInRight">
+                            {{ items.title }}
+                          </a>
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                }
+              </div>
+            </div>
+          } @placeholder {
+            <div></div>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="container footer-end">
+      <div class="flex align-item-center">
+        @defer (on viewport; prefetch on viewport) {
+          <div class="left-section animate__animated animate__delay-1s animate__fadeInUp">
+            © Copyright © 2024. All Rights Reserved.
+            <a href="/talenthands/homepage" target="_blank" class="text-primary-500">LostFound</a>
+          </div>
+          <div class="right-section">
+            <ul class="footer-link p-l-0">
+              <li>
+                @for (socialMedia of socialLinks; track $index; let i = $index) {
+                  <a
+                    [href]="socialMedia.url"
+                    target="_blank"
+                    class="avatar avatar-xs animate__animated animate__delay-{{ i + 1 }}s animate__fadeInUp"
+                  >
+                    <i class="{{ socialMedia.icon }} f-22"></i>
+                  </a>
+                }
+              </li>
+            </ul>
+          </div>
+        } @placeholder {
+          <div></div>
+        }
+      </div>
+    </div>
+  </section>

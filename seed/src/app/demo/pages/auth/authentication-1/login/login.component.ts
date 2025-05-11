@@ -53,26 +53,27 @@ import { UserService } from '../../service/user-service';
     this.userService.userlogin(this.loginForm.value)
   .pipe(first())
   .subscribe(
-    (response) => {
-      // Now `response` is the user object (response.body)
-      console.log('User response:', response);
+    (response) => {            console.log('User response:', response);
 
-      const token = localStorage.getItem('token');
-      const userId = response?.data?.id;
-      const roleId = response?.data?.roles?.[0]?.id;
+     const status = response?.status;
+        const token = localStorage.getItem('token');
 
-      console.log('Token from localStorage:', token);
-       alert(response.message);
+        console.log('Token from localStorage:', token);
 
-        this.router.navigate(['/home']);
-     
-    },
-    (error) => {
-      console.error('Login error:', error);
-      alert("Login Failed: " + (error.error?.message || "Unknown error"));
-      this.loginForm.reset();
-    }
-  );
+        if (status === 'success') {
+          alert(response.message || "Login Successful!");
+          this.router.navigate(['/homepage']);
+        } else {
+          alert("Login failed: " + (response?.message || "Unknown error"));
+          this.loginForm.reset();
+        }
+      },
+      (error) => {
+        console.error('Login error:', error);
+        alert("Login Failed: " + (error.error?.message || "Unknown error"));
+        this.loginForm.reset();
+      }
+    );
 
   }
 

@@ -1,3 +1,94 @@
+.header-area,
+.header-bottom-content {
+  background-color: #771a99; // Adjust as needed
+  padding: 10px 0;
+
+  .site-logo img {
+    max-width: 150px;
+   
+  }
+
+  .left-content ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0 10px;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+
+        i {
+          margin-right: 5px;
+        }
+
+        &:hover {
+          color: #f4b400; // Adjust hover color
+        }
+      }
+    }
+  }
+}
+
+.header-bottom-content {
+  .menu-list {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+   
+
+    li {
+      padding: 10px;
+    
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+
+        &:hover {
+          color: #f4b400;
+        }
+      }
+    }
+  }
+}
+
+.booking {
+  span a {
+    background-color: #f4b400;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #d99300;
+    }
+  }
+}
+
+
+.banner-container {
+  position:relative;
+  height:500px;
+  overflow:hidden;
+} 
+.banner-container > .banner {
+  position:absolute;
+  height: 100px;
+  width: 100px;
+  background-color: pink;
+}
+button.active{
+  background-color: pink;
+}
 body {
   background-color: #d1d4d8;
   font-family: 'Arial', sans-serif;
@@ -105,4 +196,54 @@ h1 {
 .float-end {
   float: right;
   font-weight: bold;
+}
+body {
+  background: linear-gradient(135deg, #f0f4f8, #e8f0ff);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.navbar {
+  background: rgba(30, 30, 47, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.navbar-brand, .nav-link {
+  color: #fff !important;
+  font-weight: 500;
+}
+
+.carousel-caption {
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.card {
+  border: none;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.btn-ai {
+  background: linear-gradient(to right, #5f2c82, #49a09d);
+  color: white;
+  border: none;
+}
+.btn-ai:hover {
+  background: linear-gradient(to right, #49a09d, #5f2c82);
+}
+
+.footer {
+  background: #1e1e2f;
+  color: #ccc;
+  padding: 25px 0;
+  font-size: 14px;
 }

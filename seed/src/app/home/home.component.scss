@@ -89,4 +89,107 @@
 button.active{
   background-color: pink;
 }
-  
+body {
+  background: linear-gradient(135deg, #f0f4f8, #e8f0ff);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+
+  .navbar {
+    background: rgba(30, 30, 47, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    .navbar-brand,
+    .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+    }
+  }
+
+  .carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .card {
+    border: none;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .btn-ai {
+    background: linear-gradient(to right, #5f2c82, #49a09d);
+    color: white;
+    border: none;
+
+    &:hover {
+      background: linear-gradient(to right, #49a09d, #5f2c82);
+    }
+  }
+
+  .footer {
+    background: #1e1e2f;
+    color: #ccc;
+    padding: 25px 0;
+    font-size: 14px;
+  }
+}.card-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+  background-color: #f5f7fa;
+}
+
+.home-card {
+  width: 350px;
+  height: 350px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  background-color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 16px #771A99 ; /* Yellow color with some opacity */
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px #771A99;  /* Darker yellow shadow on hover */
+  }
+
+  mat-card-header {
+    padding-bottom: 0;
+    display: flex;
+    justify-content: center;  /* Centering the title */
+    align-items: center;
+    margin-bottom: 20px;  /* Increased gap between title and description */
+  }
+
+  mat-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #153357;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;  /* Centered title */
+  }
+
+  mat-card-content {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #666;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+    text-align: justify;
+    margin-bottom: 10px;
+  }
+}

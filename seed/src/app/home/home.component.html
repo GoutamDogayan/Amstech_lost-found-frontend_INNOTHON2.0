@@ -17,7 +17,7 @@
     <div class="row">
       <div class="site-logo col-md-4 col-sm-4">
         <a routerLink="/home">
-          <img src="" alt="site-logo" />
+          <img src="assets/images/detect.png" alt="site-logo" />
         </a>
       </div>
       <div class="col-md-6 col-sm-6">
@@ -31,9 +31,32 @@
       </div>
       <div class="col-md-2 col-sm-2 text-center text-md-right">
         <div class="booking">
-          <span><a routerLink="/booking">logout</a></span>
+          <span><a routerLink="/booking" (click)="logout()">logout</a></span>
         </div>
       </div>
     </div>
   </div>
 </header> 
+<div class="carousel slide" id="heroSlider" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="assets/images/banner1.jpg" class="d-block w-100" alt="AI">
+
+    </div>
+  </div>
+ 
+</div>
+
+<div class="card-container">
+  <mat-card class="home-card" *ngFor="let card of cards">
+    <mat-card-header>
+      <mat-card-title>{{ card.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ card.description }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+

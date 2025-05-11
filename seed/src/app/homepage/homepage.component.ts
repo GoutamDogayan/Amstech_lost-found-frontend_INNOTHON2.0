@@ -9,18 +9,21 @@ import { MissingPersonService } from "../demo/pages/auth/service/missing-person"
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import Swal from "sweetalert2";
+import { UserService } from "../demo/pages/auth/service/user-service";
+import { RouterModule } from "@angular/router";
+
 
 @Component({
   selector: 'app-homepage',
     templateUrl: './homepage.component.html',
     styleUrls: ['./homepage.component.scss'],
-     imports: [ FormsModule,CommonModule],
+     imports: [ FormsModule,CommonModule,RouterModule],
 })
 export class HomepageComponent {
   name: string = '';  // ✅ Add this line
   userDetails: any = null;
 
-  constructor(private http: HttpClient, private apiService: MissingPersonService,private foundDataService: FoundDataService) {}
+  constructor(private http: HttpClient, private apiService: MissingPersonService,private foundDataService: FoundDataService,private userService:UserService) {}
 
   detectUser(name: string): void {
     this.apiService.detectUser(name).subscribe(
@@ -71,6 +74,10 @@ export class HomepageComponent {
     );
   }
 
+  logout() {
+    console.log("Logout clicked");
+    this.userService.logout();
+  }
   detectFaces(): void {
     console.log('Detecting faces...');
   }
