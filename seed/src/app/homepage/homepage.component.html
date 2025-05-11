@@ -17,7 +17,7 @@
     <div class="row">
       <div class="site-logo col-md-4 col-sm-4">
         <a routerLink="/home">
-          <img src="" alt="site-logo" />
+          <img src="assets\images\detect.png" alt="site-logo" />
         </a>
       </div>
       <div class="col-md-6 col-sm-6">
@@ -56,9 +56,12 @@
     class="form-control mb-3"
     placeholder="Enter Name..."
   />
+
+
   <div class="button-group"> <button class="btn btn-warning btn-custom" (click)="findMissingPerson()">
       Find User Details
     </button>
+
     <button class="btn btn-warning btn-custom" (click)="detectUser(name)">Detect person</button>
   </div>
 

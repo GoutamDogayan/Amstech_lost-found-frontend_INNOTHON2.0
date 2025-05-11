@@ -31,6 +31,15 @@
                 </mat-form-field>
               </div>
 
+        <div class="col-12">
+          <mat-label>Mobile Number</mat-label>
+          <mat-form-field appearance="outline" class="w-100 m-t-5">
+            <input matInput formControlName="mobileNumber" placeholder="mobile Number" required />
+            <mat-error *ngIf="faceForm.get('mobileNumber')?.invalid">
+              {{ getErrorMessage('mobileNumber') }}
+            </mat-error>
+          </mat-form-field>
+        </div>
 
 
         <div class="col-12">

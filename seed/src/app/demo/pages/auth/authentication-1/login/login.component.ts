@@ -62,7 +62,7 @@ import { UserService } from '../../service/user-service';
 
         if (status === 'success') {
           alert(response.message || "Login Successful!");
-          this.router.navigate(['/home']);
+          this.router.navigate(['/homepage']);
         } else {
           alert("Login failed: " + (response?.message || "Unknown error"));
           this.loginForm.reset();

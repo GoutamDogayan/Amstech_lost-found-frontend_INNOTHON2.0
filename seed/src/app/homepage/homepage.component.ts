@@ -8,13 +8,16 @@ import { MissingPersonService } from "../demo/pages/auth/service/missing-person"
 
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import Swal from "sweetalert2";
 import { UserService } from "../demo/pages/auth/service/user-service";
+import { RouterModule } from "@angular/router";
+
 
 @Component({
   selector: 'app-homepage',
     templateUrl: './homepage.component.html',
     styleUrls: ['./homepage.component.scss'],
-     imports: [ FormsModule,CommonModule],
+     imports: [ FormsModule,CommonModule,RouterModule],
 })
 export class HomepageComponent {
   name: string = '';  // ✅ Add this line
@@ -27,14 +30,32 @@ export class HomepageComponent {
       (response) => {
         if (response.status === 'found') {
           this.userDetails = response.data;
+
+          Swal.fire({
+            icon: 'success',
+            title: 'User Found!',
+            text: `${name} has been detected and saved successfully.`,
+            confirmButtonText: 'OK'
+          });
         } else {
-          console.log(`${name} not found.`);
           this.userDetails = null;
+          Swal.fire({
+            icon: 'info',
+            title: 'No Match Found',
+            text: `${name} not found in the system.`,
+            confirmButtonText: 'OK'
+          });
         }
       },
       (error) => {
-        console.error('Error detecting user:', error);
         this.userDetails = null;
+        Swal.fire({
+          icon: 'error',
+          title: 'Detection Error',
+          text: 'Something went wrong while detecting the user.',
+          confirmButtonText: 'Close'
+        });
+        console.error('Error detecting user:', error);
       }
     );
   }
